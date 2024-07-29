@@ -35,9 +35,12 @@ class PostController extends Controller
     
     /*Ajout du controller pour acceder au profil des users */
     public function wallall(string $id): View
-    {
+    {   
+        $user = User::findOrFail($id);
+        $posts = $user->posts;
         return view('user', [
-            'user' => User::findOrFail($id)
+            'user' => $user,
+            'posts' => $posts
         ]);
     }
 
