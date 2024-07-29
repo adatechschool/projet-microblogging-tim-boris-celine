@@ -29,6 +29,10 @@ Route::get('/wall', function () {
 
 Route::get('/wall', [PostController::class, 'wall'])->name('wall');
 
+/* Ajout de la route qui permet d'afficher le mur des users */
+
+Route::get('/user/{id}', [PostController::class, 'wallall'])->middleware(['auth', 'verified']);
+
 Route::get('/posts/{id}', [PostController::class, 'show'])->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
