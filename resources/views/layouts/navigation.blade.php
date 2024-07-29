@@ -37,6 +37,11 @@
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
+                        
+                        <!-- Ajout du liens vers wall -->
+                        <x-dropdown-link :href="route('wall')">
+                            {{ __('Wall') }}
+                        </x-dropdown-link>
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
@@ -82,6 +87,11 @@
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
+                </x-responsive-nav-link>
+                
+                <!-- Ajout du liens vers wall -->
+                <x-responsive-nav-link :href="route('wall')">
+                    {{ __('Wall') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->

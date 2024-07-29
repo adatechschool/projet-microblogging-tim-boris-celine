@@ -21,4 +21,14 @@ class PostController extends Controller
             'posts'=> Post::all()
         ]);
     }
+    
+    /*Ajout du controller pour l'affichage des posts sur le wall */
+    public function wall(): View
+    {
+    $user = auth()->user();
+    $posts = $user->posts;
+    return view('wall', [
+        'posts' => $posts
+    ]);
+    }
 }
