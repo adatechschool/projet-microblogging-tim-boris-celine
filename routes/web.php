@@ -19,21 +19,22 @@ Route::get('/', function () {
     return redirect('/dashboard');
 });
 
+Route::get('/welcome', function (){
+    return view('welcome');
+})->name('welcome');
+
 Route::get('/dashboard', [PostController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/wall', function () {
     return view('wall');
 })->middleware(['auth', 'verified'])->name('wall');
 
-/* Ajout de la route qui permet d'afficher les posts sur le wall */
-
-Route::get('/wall', [PostController::class, 'wall'])->name('wall');
 
 /* Ajout de la route qui permet d'afficher le mur des users */
 
-Route::get('/user/{id}', [PostController::class, 'wallall'])->middleware(['auth', 'verified']);
+Route::get('/wall/{id}', [PostController::class, 'wall'])->middleware(['auth', 'verified'])->name('wall');
 
-Route::get('/posts/{id}', [PostController::class, 'show'])->middleware(['auth', 'verified']);
+Route::get('/posts/{id}', [PostController::class, 'show'])->middleware(['auth', 'verified'])->name('posts');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

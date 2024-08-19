@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            Wall de {{ Auth::user()->name }}
+            Wall de {{ $user->name }}
         </h2>
     </x-slot>
 
@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <h1>Biography :</h1>
                     <br/>
-                    <p>{{ Auth::user()->biography }}</p>
+                    <p>{{ $user->biography }}</p>
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                 <div class="flex place-content-between"><p>Post by : {{ $post->user->name }}</p> <p>{{ $post->created_at }}</p></div>
                 <br>
-                <div class="flex justify-center"><img src="{{ $post->image }}" class="h-[300px] w-auto rounded-xl" /></div>
+                <div class="flex justify-center"><a href="/posts/{{ $post->id }}"><img src="{{ $post->image }}" class="h-[300px] w-auto rounded-xl" /></a></div>
                 <br>
                 <h1 class="sm:text-2xl font-semibold">{{ $post->title }}</h1>
                 <br>

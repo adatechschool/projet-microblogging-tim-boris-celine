@@ -23,7 +23,7 @@
                             {{$post->content}}
                         </p>
                         <div>
-                            Par : <a href="/wall"
+                            Par : <a href="/wall/{{$post->user_id}}"
                                 class="text-blue-600 visited:text-purple-600">{{ $post->user->name }}</a>
                         </div>
                         <p class="text-right">{{ $post->created_at }}</p>

@@ -24,24 +24,14 @@ class PostController extends Controller
     }
     
     /*Ajout du controller pour l'affichage des posts sur le wall */
-    public function wall(): View
+    public function wall(string $id): View
     {
-    $user = auth()->user();
+    $user = User::findOrFail($id);
     $posts = $user->posts;
     return view('wall', [
+        'user' => $user,
         'posts' => $posts
     ]);
-    }
-    
-    /*Ajout du controller pour acceder au profil des users */
-    public function wallall(string $id): View
-    {   
-        $user = User::findOrFail($id);
-        $posts = $user->posts;
-        return view('user', [
-            'user' => $user,
-            'posts' => $posts
-        ]);
     }
 
 }

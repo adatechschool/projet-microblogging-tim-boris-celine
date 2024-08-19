@@ -16,7 +16,7 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <!-- Ajout du liens vers wall -->
-                    <x-nav-link :href="route('wall')" :active="request()->routeIs('wall')">
+                    <x-nav-link :href=" route('wall',['id' => Auth::user()->id]) " :active="request()->routeIs('wall')">
                         {{ __('Wall') }}
                     </x-nav-link>
                 </div>
@@ -75,7 +75,7 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
             <!-- Ajout du liens vers wall -->
-            <x-responsive-nav-link :href="route('wall')" :active="request()->routeIs('wall')">
+            <x-responsive-nav-link :href=" route('wall',['id' => Auth::user()->id]) " :active="request()->routeIs('wall')">
                     {{ __('Wall') }}
             </x-responsive-nav-link>
         </div>
