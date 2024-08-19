@@ -15,6 +15,10 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <!-- Ajout du liens vers wall -->
+                    <x-nav-link :href="route('wall')" :active="request()->routeIs('wall')">
+                        {{ __('Wall') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -70,6 +74,10 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <!-- Ajout du liens vers wall -->
+            <x-responsive-nav-link :href="route('wall')" :active="request()->routeIs('wall')">
+                    {{ __('Wall') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
@@ -83,7 +91,7 @@
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
-
+                
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf

@@ -23,7 +23,15 @@ Route::get('/dashboard', [PostController::class, 'index'])->middleware(['auth', 
 
 Route::get('/wall', function () {
     return view('wall');
-})->middleware(['auth', 'verified']);
+})->middleware(['auth', 'verified'])->name('wall');
+
+/* Ajout de la route qui permet d'afficher les posts sur le wall */
+
+Route::get('/wall', [PostController::class, 'wall'])->name('wall');
+
+/* Ajout de la route qui permet d'afficher le mur des users */
+
+Route::get('/user/{id}', [PostController::class, 'wallall'])->middleware(['auth', 'verified']);
 
 Route::get('/posts/{id}', [PostController::class, 'show'])->middleware(['auth', 'verified']);
 

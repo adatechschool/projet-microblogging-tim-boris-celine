@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -21,4 +22,26 @@ class PostController extends Controller
             'posts'=> Post::all()
         ]);
     }
+    
+    /*Ajout du controller pour l'affichage des posts sur le wall */
+    public function wall(): View
+    {
+    $user = auth()->user();
+    $posts = $user->posts;
+    return view('wall', [
+        'posts' => $posts
+    ]);
+    }
+    
+    /*Ajout du controller pour acceder au profil des users */
+    public function wallall(string $id): View
+    {   
+        $user = User::findOrFail($id);
+        $posts = $user->posts;
+        return view('user', [
+            'user' => $user,
+            'posts' => $posts
+        ]);
+    }
+
 }
