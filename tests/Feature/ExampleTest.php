@@ -24,7 +24,8 @@ class ExampleTest extends TestCase
      */
     public function test_wrong_password(): void
     {
-        $response = $this->post('/login', ['email' => 'machin@machin.machin', 'password' => 'machin']);
+        $user = User::factory()->create();
+        $response = $this->post('/login', ['email' => $user->email, 'password' => 'machin']);
 
         $response->assertStatus(302);
         $this->assertGuest();
@@ -35,7 +36,8 @@ class ExampleTest extends TestCase
      */
     public function test_right_password(): void
     {
-        $response = $this->post('/login', ['email' => 'machin@machin.machin', 'password' => 'machinmachin']);
+        $user = User::factory()->create();
+        $response = $this->post('/login', ['email' => $user->email, 'password' => 'password']);
 
         $response->assertStatus(302);
         $response->assertRedirectToRoute('dashboard');
@@ -61,7 +63,8 @@ class ExampleTest extends TestCase
      */
     public function test_register_when_email_already_exists(): void
     {
-        $response = $this->post('/register', ['name' => 'machin', 'email' => 'machin@machin.machin', 'password' => 'machinmachin']);
+        $user = User::factory()->create();
+        $response = $this->post('/register', ['name' => 'machin', 'email' => $user->email, 'password' => 'machinmachin']);
         $response->assertSessionHasErrors('email');
         $response->assertStatus(302);
 
